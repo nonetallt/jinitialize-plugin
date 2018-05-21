@@ -2,6 +2,11 @@
 
 Boilerplate setup for creating a new jinitialize plugin
 
+## Installation
+```
+composer create-project nonetallt/jinitialize-plugin-new [project name]
+```
+
 ## Composer setup
 
 In order for your plugin to be registered in a jinitialize project, you must define the plugin information in the **extra** section of your composer.json file.
