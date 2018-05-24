@@ -39,7 +39,7 @@ An array of strings that the user of this plugin can define in their main projec
 ## Keeping the commands section up to date
 You can use the following command to automatically export all of the command classes in the *src/Commands* folder to your composer.json file:
 ```
-vendor/bin/robo watch:commands
+vendor/bin/robo update:commands
 ```
 
 ## Commands

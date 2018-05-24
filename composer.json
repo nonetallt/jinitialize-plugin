@@ -1,0 +1,43 @@
+{
+    "name": "nonetallt\/jinitialize-plugin-new",
+    "description": "Boilerplate setup for creating a new jinitialize plugin",
+    "type": "project",
+    "require": {
+        "php": ">=7.0.0",
+        "nonetallt\/jinitialize-plugin": "dev-master"
+    },
+    "require-dev": {
+        "phpunit\/phpunit": "^6",
+        "consolidation\/robo": "~1",
+        "henrikbjorn\/lurker": "^1.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jyri Mikkola",
+            "email": "jyri.mikkola@pp.inet.fi"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Nonetallt\\Jinitialize\\Plugin\\Example\\": "src\/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests\/"
+        }
+    },
+    "extra": {
+        "jinitialize-plugin": {
+            "name": "ExamplePlugin",
+            "commands": [
+                "Nonetallt\\Jinitialize\\Plugin\\Example\\Commands\\ExampleCommand"
+            ],
+            "settings": [
+                "exampleSetting1"
+            ]
+        }
+    }
+}
