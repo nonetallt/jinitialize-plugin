@@ -95,6 +95,17 @@ Get a value stored in the application container. Imported values should only be 
 ### getIo();
 Get an instance of [Symfony\Component\Console\Style\SymfonyStyle](https://api.symfony.com/4.0/Symfony/Component/Console/Style/SymfonyStyle.html). This can be used to write and get input from the [CLI](https://en.wikipedia.org/wiki/Command-line_interface). For examples on the IO usage, please check out the [symfony console documentation](https://symfony.com/doc/current/console/style.html#helper-methods).
 
+### getOutput();
+Get Symfony\Component\Console\Output\OutputInterface
+
+### getInput();
+Get Symfony\Component\Console\Input\InputInterface, mostly useful for handling command arguments and options.
+
+```php
+$this->getInput()->getArgument('firstname');
+$this->getInput()->getOption('lastname');
+```
+
 ### getUser();
 Get an instance of Nonetallt\Jinitialize\Plugin\ShellUser. The class has following helper methods:
 * isRoot()
