@@ -33,7 +33,7 @@ The name of the plugin.
 An array including fully qualified names of the command classes you wish this plugin to export.
 
 ### settings
-An array of strings that the user of this plugin can define in their main project .env file. Settings are useful for defining commonly used default values instead of prompting the user for imput each time. Examples of settings could be along the lines of "defaultUser" and/or "defaultPassword".
+An array of strings that the user of this plugin can define in their main project .env file. Settings are useful for defining commonly used default values instead of prompting the user for input each time. Examples of settings could be along the lines of "defaultUser" and/or "defaultPassword".
 
 
 ## Keeping the commands section up to date
