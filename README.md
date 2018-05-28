@@ -19,8 +19,8 @@ extra: {
             "Nonetallt\\Jinitialize\\Plugin\\Example\\Commands\\MyCommand::class"
         ],
         "procedures": [
-            'procedures/my-procedure.json'
-        ]
+            "procedures/my-procedure.json"
+        ],
         "settings": [
             "mySetting1",
             "mySetting2"
@@ -35,8 +35,11 @@ The name of the plugin. This will be used as the namespace for commands exported
 ### commands
 An array including fully qualified names of the command classes you wish this plugin to export.
 
+### Procedures
+An array including all the filepaths from the root of the project to the [procedure](https://github.com/nonetallt/jinitialize#procedure) files you wish this plugin to export.
+
 ### settings
-An array of strings that the user of this plugin can define in their main project .env file. Settings are useful for defining commonly used default values instead of prompting the user for input each time. Examples of settings could be along the lines of "defaultUser" and/or "defaultPassword".
+An array of strings that the user of this plugin can define in their jinitialize .env file. Settings are useful for defining commonly used default values instead of prompting the user for input each time. Examples of settings could be along the lines of "defaultUser" and "defaultPassword".
 
 
 ## Keeping the commands section up to date
@@ -47,7 +50,7 @@ vendor/bin/robo update:commands
 
 ## Commands
 
-The JinitializeCommand class extends from Symfony\Component\Console\Command\Command and defines a couple of useful helpers you might need when creating your own subclasses.
+The [JinitializeCommand class](https://github.com/nonetallt/jinitialize-core/blob/master/src/JinitializeCommand.php) extends from [Symfony\Component\Console\Command\Command](https://api.symfony.com/3.4/Symfony/Component/Console/Command/Command.html) and defines a couple of useful helpers you might need when creating your own subclasses.
 
 ```php
 use Nonetallt\Jinitialize\Plugin\JinitializeCommand;
@@ -95,14 +98,12 @@ Stores a given key - value pair to the application container. This should be use
 ### import(string $plugin, string $key);
 Get a value stored in the application container. Imported values should only be used as default options or suggestions given that they can be null if the commands from a given plugin haven't been executed yet.
 
-### getIo();
-Get an instance of [Symfony\Component\Console\Style\SymfonyStyle](https://api.symfony.com/4.0/Symfony/Component/Console/Style/SymfonyStyle.html). This can be used to write and get input from the [CLI](https://en.wikipedia.org/wiki/Command-line_interface). For examples on the IO usage, please check out the [symfony console documentation](https://symfony.com/doc/current/console/style.html#helper-methods).
+### handle($input, $output, $style);
+The main method for code execution when the command is ran. They can be used to write and get input from the [CLI](https://en.wikipedia.org/wiki/Command-line_interface). For examples on the IO usage, please check out the [symfony console documentation](https://symfony.com/doc/current/console/style.html#helper-methods).
 
-### getOutput();
-Get Symfony\Component\Console\Output\OutputInterface
-
-### getInput();
-Get Symfony\Component\Console\Input\InputInterface, mostly useful for handling command arguments and options.
+* [$input](https://api.symfony.com/3.4/Symfony/Component/Console/Input/InputInterface.html)
+* [$output](https://api.symfony.com/3.4/Symfony/Component/Console/Output/OutputInterface.html)
+* [$style](https://api.symfony.com/3.4/Symfony/Component/Console/Style/SymfonyStyle.html). 
 
 ```php
 $this->getInput()->getArgument('firstname');
@@ -118,3 +119,7 @@ Get an instance of Nonetallt\Jinitialize\Plugin\ShellUser. The class has followi
 
 ### getPluginName();
 Get the name of the plugin this command is registered by.
+
+## Additional tutorials
+
+[Command input options and arguments](http://symfony.com/doc/3.4/console/input.html)
