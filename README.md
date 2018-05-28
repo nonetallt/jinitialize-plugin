@@ -99,11 +99,11 @@ Stores a given key - value pair to the application container. This should be use
 Get a value stored in the application container. Imported values should only be used as default options or suggestions given that they can be null if the commands from a given plugin haven't been executed yet.
 
 ### handle($input, $output, $style);
-The main method for code execution when the command is ran. They can be used to write and get input from the [CLI](https://en.wikipedia.org/wiki/Command-line_interface). For examples on the IO usage, please check out the [symfony console documentation](https://symfony.com/doc/current/console/style.html#helper-methods).
+The main method for code execution when the command is ran. The parameters gives you access to Symfony console I/O. For examples on the I/O usage, please check out the [symfony console documentation](https://symfony.com/doc/current/console/style.html#helper-methods).
 
 * [$input](https://api.symfony.com/3.4/Symfony/Component/Console/Input/InputInterface.html)
 * [$output](https://api.symfony.com/3.4/Symfony/Component/Console/Output/OutputInterface.html)
-* [$style](https://api.symfony.com/3.4/Symfony/Component/Console/Style/SymfonyStyle.html). 
+* [$style](https://api.symfony.com/3.4/Symfony/Component/Console/Style/SymfonyStyle.html)
 
 ```php
 $this->getInput()->getArgument('firstname');
