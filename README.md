@@ -35,7 +35,7 @@ The name of the plugin. This will be used as the namespace for commands exported
 ### commands
 An array including fully qualified names of the command classes you wish this plugin to export.
 
-### Procedures
+### procedures
 An array including all the filepaths from the root of the project to the [procedure](https://github.com/nonetallt/jinitialize#procedure) files you wish this plugin to export.
 
 ### settings
@@ -92,11 +92,14 @@ class ExampleCommand extends JinitializeCommand
 ### abort(string $message);
 Stops the execution of the comand by throwing Nonetallt\Jinitialize\Exceptions\CommandAbortedException. The procedure running the command will then attempt to revert executed commands by calling their **revert()** method.
 
+## configure();
+Implemented from the command class. Used to define basic command information, [input options and arguments](http://symfony.com/doc/3.4/console/input.html).
+
 ### export(string $key, $value);
 Stores a given key - value pair to the application container. This should be used to give other plugins access to useful values defined by the command. For example, a database plugin might define a command for creating a new database and then export the name of the created database so it can be later used for defining database name in the settings of an application.
 
 ### import(string $plugin, string $key);
-Get a value stored in the application container. Imported values should only be used as default options or suggestions given that they can be null if the commands from a given plugin haven't been executed yet.
+Get a value stored in the application container. Imported values should only be used as default options or suggestions, given that they can be null if the commands from a given plugin haven't been executed yet.
 
 ### handle($input, $output, $style);
 The main method for code execution when the command is ran. The parameters gives you access to Symfony console I/O. For examples on the I/O usage, please check out the [symfony console documentation](https://symfony.com/doc/current/console/style.html#helper-methods).
@@ -119,7 +122,3 @@ Get an instance of Nonetallt\Jinitialize\Plugin\ShellUser. The class has followi
 
 ### getPluginName();
 Get the name of the plugin this command is registered by.
-
-## Additional tutorials
-
-[Command input options and arguments](http://symfony.com/doc/3.4/console/input.html)
