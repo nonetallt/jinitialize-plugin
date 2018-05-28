@@ -120,5 +120,37 @@ Get a value stored in the application container. Imported values should only be 
 
 
 ## Testing
+
+To test running the commands in your plugin, you can use the extended PHPunit TestCase class from the jinitialize-core. The TestCase automatically registers the local plugin defined in your composer.json file and allows you to run all the defined commands.
+
 ```php
+<?php
+
+namespace Tests\Unit;
+
+use Nonetallt\Jinitialize\Testing\TestCase;
+
+class ExampleTest extends TestCase
+{
+    public function testExample()
+    {
+        $params = ['param1' => 'value'];
+        
+        // Running commands by class name
+        $this->runCommand(ExampleCommand::class, $params);
+        
+        // Running commands using their method signature
+        $this->runCommand('plugin:command', $params);
+    }
+}
+
+class 
 ```
+
+### Assertions
+
+The extended TestCase class has currently the following custom assertions:
+* assertContainerEquals()
+* assertContainerContains()
+
+These can be used to define the state of exported variables.
