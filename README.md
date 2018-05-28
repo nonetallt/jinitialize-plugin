@@ -150,7 +150,7 @@ class
 ### Assertions
 
 The extended TestCase class has currently the following custom assertions:
-* assertContainerEquals()
-* assertContainerContains()
+* assertContainerEquals(array $data)
+* assertContainerContains(array $data)
 
 These can be used to define the state of exported variables.
