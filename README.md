@@ -1,10 +1,10 @@
-# jinitialize-plugin-new
+# jinitialize-plugin
 
-Boilerplate setup for creating a new jinitialize plugin
+Boilerplate setup for creating a new [jinitialize](https://github.com/nonetallt/jinitialize) plugin.
 
 ## Installation
 ```
-composer create-project nonetallt/jinitialize-plugin-new [project name]
+composer create-project nonetallt/jinitialize-plugin [project name]
 ```
 
 ## Composer setup
@@ -18,6 +18,9 @@ extra: {
         "commands": [
             "Nonetallt\\Jinitialize\\Plugin\\Example\\Commands\\MyCommand::class"
         ],
+        "procedures": [
+            'procedures/my-procedure.json'
+        ]
         "settings": [
             "mySetting1",
             "mySetting2"
@@ -27,7 +30,7 @@ extra: {
 ```
 
 ### name
-The name of the plugin.
+The name of the plugin. This will be used as the namespace for commands exported by this plugin so making it short is preferable.
 
 ### commands
 An array including fully qualified names of the command classes you wish this plugin to export.
@@ -58,14 +61,14 @@ class ExampleCommand extends JinitializeCommand
         $this->setHelp('extended description here');
     }
     
-    protected function handle()
+    protected function handle($input, $output, $style)
     {
         // Run code on command execution
         
         // Ask for user input, suggest default value of 'World'
-        $name = $this->getIo()->ask('What is your name?', 'World');
+        $name = $style->ask('What is your name?', 'World');
         
-        $this->getIo()->title("Hello $name!");
+        $style->title("Hello $name!");
         
         $this->export('userName', $name);
     }
@@ -84,7 +87,7 @@ class ExampleCommand extends JinitializeCommand
 ```
 
 ### abort(string $message);
-Stops the execution of the comand by throwing Nonetallt\Jinitialize\Plugin\Exceptions\CommandAbortedException. The procedure running the command will then attempt to revert executed commands by calling their **revert()** method.
+Stops the execution of the comand by throwing Nonetallt\Jinitialize\Exceptions\CommandAbortedException. The procedure running the command will then attempt to revert executed commands by calling their **revert()** method.
 
 ### export(string $key, $value);
 Stores a given key - value pair to the application container. This should be used to give other plugins access to useful values defined by the command. For example, a database plugin might define a command for creating a new database and then export the name of the created database so it can be later used for defining database name in the settings of an application.
