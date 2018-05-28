@@ -117,3 +117,8 @@ The main method for code execution when the command is ran. The parameters gives
 
 ### import(string $plugin, string $key);
 Get a value stored in the application container. Imported values should only be used as default options or suggestions, given that they can be null if the commands from a given plugin haven't been executed yet.
+
+
+## Testing
+```php
+```
