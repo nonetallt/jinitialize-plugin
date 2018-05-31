@@ -165,8 +165,7 @@ class ExampleTest extends TestCase
 ```
 ### Methods
 * runCommand(string $command, array $args = [], array $input = []);
-* runProcedure(string $procedure, array $args = [], array $input = []);
-* runCommandAsProcedure(string $command, array $args = [], array $input = []);
+* runCommandsAsProcedure(array $commands, array $args = [], array $input = []);
 
 ### Assertions
 
