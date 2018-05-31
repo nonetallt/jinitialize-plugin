@@ -92,6 +92,9 @@ class ExampleCommand extends JinitializeCommand
 ### abort(string $message);
 Stops the execution of the comand by throwing Nonetallt\Jinitialize\Exceptions\CommandAbortedException. The procedure running the command will then attempt to revert executed commands by calling their **revert()** method.
 
+### belongsToProcedure();
+Return true if the command object is registered as a part of a procedure, otherwise return false.
+
 ### configure();
 Implemented from the command class. Used to define basic command information, [input options and arguments](http://symfony.com/doc/3.4/console/input.html).
 
@@ -118,6 +121,11 @@ The main method for code execution when the command is ran. The parameters gives
 ### import(string $plugin, string $key);
 Get a value stored in the application container. Imported values should only be used as default options or suggestions, given that they can be null if the commands from a given plugin haven't been executed yet.
 
+### recommendsExecuting();
+This method should return an array with classnames of commands that should be executed before running this command. Users will receive notification about recommended values when running the command either standalone or as part of a process that does not execute the recommended methods before this method.
+
+### requiresExecuting();
+This method should return an array with classnames of commands that **must** be executed before running this command. Trying to execute a process with this command that does not execute the required commands before this method will throw an exception. Trying to execute this command outside of a procedure will throw an exception.
 
 ## Testing
 
@@ -134,7 +142,18 @@ class ExampleTest extends TestCase
 {
     public function testExample()
     {
-        $params = ['param1' => 'value'];
+        // The arguments and options accepted by the command
+        $params = [
+            'arg1' => 'value',
+            'arg2' => 'value',
+            '--option1' => 'value
+        ];
+        
+        // The values the user would input in order they are asked for by the command
+        $input = [
+            'userInput1', 
+            'userInput2'
+        ];
         
         // Running commands by class name
         $this->runCommand(ExampleCommand::class, $params);
@@ -144,6 +163,10 @@ class ExampleTest extends TestCase
     }
 }
 ```
+### Methods
+* runCommand(string $command, array $args = [], array $input = []);
+* runProcedure(string $procedure, array $args = [], array $input = []);
+* runCommandAsProcedure(string $command, array $args = [], array $input = []);
 
 ### Assertions
 
