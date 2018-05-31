@@ -144,9 +144,9 @@ class ExampleTest extends TestCase
     {
         // The arguments and options accepted by the command
         $params = [
-            'arg1' => 'value',
-            'arg2' => 'value',
-            '--option1' => 'value
+            'arg1'      => 'value',
+            'arg2'      => 'value',
+            '--option1' => 'value'
         ];
         
         // The values the user would input in order they are asked for by the command
