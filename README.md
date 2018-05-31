@@ -121,7 +121,7 @@ Get a value stored in the application container. Imported values should only be 
 
 ## Testing
 
-To test running the commands in your plugin, you can use the extended PHPunit TestCase class from the jinitialize-core. The TestCase automatically registers the local plugin defined in your composer.json file and allows you to run all the defined commands.
+To test running the commands in your plugin, you can use the extended PHPunit TestCase class from the jinitialize-core. The TestCase automatically registers the local plugin defined in your composer.json file and allows you to run all the defined commands. **Don't forget to call the parent method at if you override either setUp() or tearDown() methods of TestCase**.
 
 ```php
 <?php
@@ -143,8 +143,6 @@ class ExampleTest extends TestCase
         $this->runCommand('plugin:command', $params);
     }
 }
-
-class 
 ```
 
 ### Assertions
