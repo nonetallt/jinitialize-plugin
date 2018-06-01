@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use PHPunit\Framework\TestCase;
+use Nonetallt\Jinitialize\Testing\TestCase;
 
 class UnitTest extends TestCase
 {
@@ -36,5 +36,11 @@ class UnitTest extends TestCase
         }
 
         return true;
+    }
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->registerLocalPlugin(__DIR__.'/../../composer.json');
     }
 }

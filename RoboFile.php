@@ -1,6 +1,6 @@
 <?php
 
-use Nonetallt\Jinitialize\Plugin\JinitializeCommand;
+use Nonetallt\Jinitialize\JinitializeCommand;
 
 /**
  * This is project's console commands configuration for Robo task runner.

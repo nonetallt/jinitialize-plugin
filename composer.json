@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "nonetallt/jinitialize-core": "dev-master"
+        "nonetallt/jinitialize-core": "dev-master",
+        "symfony/console": "^3.4"
     },
     "require-dev": {
         "phpunit\/phpunit": "^6",
