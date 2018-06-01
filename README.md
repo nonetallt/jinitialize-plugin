@@ -143,7 +143,7 @@ class ExampleTest extends TestCase
     public function testExample()
     {
         // The arguments and options accepted by the command
-        $params = [
+        $args = [
             'arg1'      => 'value',
             'arg2'      => 'value',
             '--option1' => 'value'
@@ -156,10 +156,10 @@ class ExampleTest extends TestCase
         ];
         
         // Running commands by class name
-        $this->runCommand(ExampleCommand::class, $params);
+        $this->runCommand(ExampleCommand::class, $args, $input);
         
         // Running commands using their method signature
-        $this->runCommand('plugin:command');
+        $this->runCommand('plugin:command', [], $input);
     }
     
     protected function setUp()
