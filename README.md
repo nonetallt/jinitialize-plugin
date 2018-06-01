@@ -129,7 +129,7 @@ This method should return an array with classnames of commands that **must** be 
 
 ## Testing
 
-To test running the commands in your plugin, you can use the extended PHPunit TestCase class from the jinitialize-core. The TestCase automatically registers the local plugin defined in your composer.json file and allows you to run all the defined commands. **Don't forget to call the parent method if you override either setUp() or tearDown() methods of TestCase**.
+To test running the commands in your plugin, you can use the extended PHPunit TestCase class from the jinitialize-core. Use the **registerLocalPlugin($pathToComposer)** to register the plugin defined in your composer.json file. **Don't forget to call the parent method if you override either setUp() or tearDown() methods of TestCase**.
 
 ```php
 <?php
@@ -159,13 +159,28 @@ class ExampleTest extends TestCase
         $this->runCommand(ExampleCommand::class, $params);
         
         // Running commands using their method signature
-        $this->runCommand('plugin:command', $params);
+        $this->runCommand('plugin:command');
+    }
+    
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->registerLocalPlugin(__DIR__.'/../../composer.json');
     }
 }
 ```
 ### Methods
 * runCommand(string $command, array $args = [], array $input = []);
 * runCommandsAsProcedure(array $commands, array $args = [], array $input = []);
+
+Commands passed to both **runCommand** and **runCommandsAsProcedure** can either be the fully qualified classname or a method call using the same syntax as when using jinitialize regularly.
+
+```php
+$this->runCommand(MyCommand::class, ['arg1' => 1, '--option1' => 2]);
+$this->runCommand('plugin:command 1 --option1=2');
+```
+
+The $args parameter should only be used when $command or $commands are Classnames. When command is a signature call, the parameters of the call will be used instead and $args will be ignored.
 
 ### Assertions
 
