@@ -9,7 +9,7 @@ class FeatureTest extends TestCase
 
     public function testExample()
     {
-        //
+        $thiss->assertTrue(true);
     }
 
     public function setUp()
