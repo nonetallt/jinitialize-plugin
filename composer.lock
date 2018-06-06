@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nonetallt/jinitialize-core.git",
-                "reference": "1cf5bff02cfe72766c5e0f4cf1cc010a41d92576"
+                "reference": "1d0c839ba1d849793d2c5b9a9eb04a77762d33d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nonetallt/jinitialize-core/zipball/1cf5bff02cfe72766c5e0f4cf1cc010a41d92576",
-                "reference": "1cf5bff02cfe72766c5e0f4cf1cc010a41d92576",
+                "url": "https://api.github.com/repos/nonetallt/jinitialize-core/zipball/1d0c839ba1d849793d2c5b9a9eb04a77762d33d7",
+                "reference": "1d0c839ba1d849793d2c5b9a9eb04a77762d33d7",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 }
             ],
             "description": "Core components for jinitialize projects",
-            "time": "2018-06-05 18:42:33"
+            "time": "2018-06-06 12:41:24"
         },
         {
             "name": "psr/log",
