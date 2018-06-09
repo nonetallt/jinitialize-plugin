@@ -118,8 +118,8 @@ The main method for code execution when the command is ran. The parameters gives
 * [$output](https://api.symfony.com/3.4/Symfony/Component/Console/Output/OutputInterface.html)
 * [$style](https://api.symfony.com/3.4/Symfony/Component/Console/Style/SymfonyStyle.html)
 
-### import(string $plugin, string $key);
-Get a value stored in the application container. Imported values should only be used as default options or suggestions, given that they can be null if the commands from a given plugin haven't been executed yet.
+### import(string $key);
+Get a value stored in the application container. Imported values should only be used as default options or suggestions, given that they can be null if the commands from a given plugin haven't been executed yet. Values can only be imported from within the same plugin. Use placeholder paramters or env instead for cross plugin import purposes.
 
 ### recommendsExecuting();
 This method should return an array with classnames of commands that should be executed before running this command. Users will receive notification about recommended values when running the command either standalone or as part of a process that does not execute the recommended methods before this method.
