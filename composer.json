@@ -2,7 +2,7 @@
     "name": "nonetallt/jinitialize-plugin",
     "description": "Boilerplate setup for creating a new jinitialize plugin.",
     "type": "project",
-    "keywords": [],
+    "keywords": ["jinitialize"],
     "require": {
         "php": ">=7.0.0",
         "nonetallt/jinitialize-core": "dev-master",
